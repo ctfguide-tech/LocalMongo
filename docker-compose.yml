@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  mongo:
+    container_name: mongodb
+    image: mongo:latest
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data/mongo:/data/db
+    expose:
+      - "27011"
+    command: ["mongod", "--bind_ip_all"]
+    env_file:
+      - .env
